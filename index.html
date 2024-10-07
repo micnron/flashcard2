@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .flashcard {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .flashcard:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .back {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ffcc00;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">Pergunta 1: O que é HTML?</div>
+        <div class="back">Resposta: Linguagem de Marcação de Hipertexto.</div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">Pergunta 2: O que é CSS?</div>
+        <div class="back">Resposta: Folhas de Estilo em Cascata.</div>
+    </div>
+
+    <script>
+        function flipCard(card) {
+            const front = card.querySelector('.front');
+            const back = card.querySelector('.back');
+            front.style.display = front.style.display === 'none' ? 'flex' : 'none';
+            back.style.display = back.style.display === 'none' ? 'flex' : 'none';
+        }
+    </script>
+</body>
+</html>
