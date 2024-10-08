@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flashcards</title>
+    <title>Flashcards - Perguntas Aleatórias</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f0f4f8;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
+        h1 {
+            color: #334E68;
+        }
         .flashcard {
-            background-color: #fff;
+            background-color: #334E68;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             width: 300px;
@@ -24,43 +28,71 @@
             justify-content: center;
             align-items: center;
             font-size: 24px;
+            color: #fff;
             cursor: pointer;
             position: relative;
             overflow: hidden;
+            margin: 15px;
+            transition: transform 0.3s;
         }
         .flashcard:hover {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
         }
-        .back {
-            display: none;
+        .flashcard .front, .flashcard .back {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ffcc00;
+            width: 100%;
+            height: 100%;
+            display: flex;
             justify-content: center;
             align-items: center;
+            backface-visibility: hidden;
+            transition: transform 0.6s;
+        }
+        .flashcard .back {
+            background-color: #FFCC00;
+            color: #000;
+            transform: rotateY(180deg);
+        }
+        .flashcard.flipped .front {
+            transform: rotateY(180deg);
+        }
+        .flashcard.flipped .back {
+            transform: rotateY(360deg);
         }
     </style>
 </head>
 <body>
+    <h1>Flashcards - Perguntas Aleatórias</h1>
+    
     <div class="flashcard" onclick="flipCard(this)">
         <div class="front">Pergunta 1: O que é HTML?</div>
         <div class="back">Resposta: Linguagem de Marcação de Hipertexto.</div>
     </div>
 
     <div class="flashcard" onclick="flipCard(this)">
-        <div class="front">Pergunta 2: O que é CSS?</div>
-        <div class="back">Resposta: Folhas de Estilo em Cascata.</div>
+        <div class="front">Pergunta 2: Qual a capital da França?</div>
+        <div class="back">Resposta: Paris.</div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">Pergunta 3: Quanto é 5 x 5?</div>
+        <div class="back">Resposta: 25.</div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">Pergunta 4: Quem pintou a Mona Lisa?</div>
+        <div class="back">Resposta: Leonardo da Vinci.</div>
+    </div>
+
+    <div class="flashcard" onclick="flipCard(this)">
+        <div class="front">Pergunta 5: Qual o maior planeta do Sistema Solar?</div>
+        <div class="back">Resposta: Júpiter.</div>
     </div>
 
     <script>
         function flipCard(card) {
-            const front = card.querySelector('.front');
-            const back = card.querySelector('.back');
-            front.style.display = front.style.display === 'none' ? 'flex' : 'none';
-            back.style.display = back.style.display === 'none' ? 'flex' : 'none';
+            card.classList.toggle('flipped');
         }
     </script>
 </body>
